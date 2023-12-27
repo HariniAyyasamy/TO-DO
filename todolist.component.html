@@ -1,0 +1,39 @@
+<div class="container">
+  <h1> TO-DO Application</h1>
+
+  <hr>
+  <form [formGroup]="tasks" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="task">Task</label>
+      <input type="Text" class="form-control" formControlName="task" id="task" placeholder="Enter Task">
+      <small id="ErrorMessage" *ngIf="!this.tasks.valid" class="form-text text-danger">Required Field</small>
+    </div>
+    <button id="SubmitButton" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+
+  <hr>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Delete</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let value of values; let i = index">
+        <td>{{value.task}}</td>
+        <td><input id="mycheckbox" type="checkbox" aria-label="Checkbox for following text input"></td>
+        <td><button class=" btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+
+</div>
